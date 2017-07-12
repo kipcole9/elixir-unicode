@@ -160,7 +160,7 @@ defmodule Unicode do
   File.stream!('unicode_source_files/DerivedCoreProperties.txt')
   |> Stream.reject(fn raw_line ->
     # skip comments and empty lines.
-    String.strip(raw_line) == "" || String.starts_with?(raw_line, "#")
+    String.trim(raw_line) == "" || String.starts_with?(raw_line, "#")
   end)
   |> Stream.map(fn raw_line ->
     [charinfo, property] = CompiletimeHelper.split_derived_core_properties_line(raw_line)
@@ -207,7 +207,7 @@ defmodule Unicode do
 
     File.stream!('unicode_source_files/Blocks.txt')
     |> Stream.reject(fn raw_line ->
-      String.strip(raw_line) == "" || String.starts_with?(raw_line, "#")
+      String.trim(raw_line) == "" || String.starts_with?(raw_line, "#")
     end)
     |> Stream.map(fn raw_line ->
       [charinfo, block_name] = CompiletimeHelper.split_block_line(raw_line)

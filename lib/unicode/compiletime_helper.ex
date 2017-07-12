@@ -11,13 +11,13 @@ defmodule Unicode.CompiletimeHelper do
     |> String.split("#") # comments
     |> List.first
     |> String.split(";") # Delimiter between codepoint (range) and property name.
-    |> Enum.map(&String.strip/1)
+    |> Enum.map(&String.trim/1)
   end
 
   def split_block_line(raw_line) do
     raw_line
     |> String.split(";")
-    |> Enum.map(&String.strip/1)
+    |> Enum.map(&String.trim/1)
   end
   def normalize_block_name(block_name) do
     block_name
